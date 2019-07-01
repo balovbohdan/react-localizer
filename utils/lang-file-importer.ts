@@ -15,6 +15,8 @@ export const importLangFile = async (props:Props) => {
 const doImport = props => {
     const {load} = props;
 
+    console.log(props);
+
     if (typeof load === 'function')
         return importByHelper(props);
 
