@@ -1,38 +1,39 @@
-import {merge, cloneDeep} from 'lodash';
-import React, {useState, useEffect} from 'react';
+import * as React from 'react';
 
-import {PropsToChildren} from '@components-common/props-to-children';
+import * as T from './types';
+import {importLangFile} from './utils';
+import {LoadingResult} from './LoadingResult';
 
-import {importLangFile} from './utils/lang-file-importer';
+type Props = {
+    lang?:T.Lang;
+    shred?:string;
+    alias?:string;
+    filesPath?:string;
+    children?:React.ReactNode;
+    getLangCode:T.LangCodeGetter;
+    load?:T.LangLoader|T.LangLoader[];
+};
 
-/**
- * @param props
- *     @param [props.lang]
- *     @param {string} [props.shred]
- *     @param {string} [props.alias]
- *     @param {string} [props.filesPath]
- *     @param {React.ReactNode} props.children
- *     @param {Function|Function[]} [props.load]
- */
-export const Localizer = props => {
-    const [lang, setLang] = useState(null);
-    const [isImporting, setIsImporting] = useState(false);
+export const Localizer = (props:Props) => {
+    const [lang, setLang] = React.useState(null);
+    const [isImporting, setIsImporting] = React.useState(false);
 
-    useEffect(() => {
-        importData(props)
-            .catch(e => console.error(e));
+    React.useEffect(() => {
+        importData()
+            .catch(e => console.warn(e));
     }, []);
 
-    const importData = async props => {
+    const importData = async () => {
         if (lang || isImporting) return;
 
         setIsImporting(true);
 
-        const {load, filesPath} = props;
+        const {load, filesPath, getLangCode} = props;
 
         const res = await importLangFile({
             load,
-            filesPath
+            filesPath,
+            getLangCode
         });
 
         setLang(res);
@@ -43,55 +44,12 @@ export const Localizer = props => {
         return null;
 
     return (
-        <Result
+        <LoadingResult
             loadedLang={lang}
             shred={props.shred}
             parentLang={props.lang}
             loadedLangAlias={props.alias}>
             {props.children}
-        </Result>
+        </LoadingResult>
     );
-};
-
-/**
- * @param props
- *     @param props.loadedLang
- *     @param [props.parentLang]
- *     @param {string} [props.shred]
- *     @param [props.loadedLangAlias]
- *     @param {React.ReactNode} props.children
- */
-const Result = props => {
-    const loadedLang = prepareLoadedLang(props);
-
-    const lang = merge(
-        loadedLang,
-        props.parentLang
-    );
-
-    return (
-        <PropsToChildren props={{lang}}>
-            {props.children}
-        </PropsToChildren>
-    );
-};
-
-/**
- * @param props
- *     @param [props.loadedLang]
- *     @param {string} [props.shred]
- *     @param [props.loadedLangAlias]
- */
-const prepareLoadedLang = ({shred, loadedLang, loadedLangAlias}) => {
-    loadedLang = cloneDeep(loadedLang);
-
-    if (shred)
-        loadedLang = loadedLang[shred];
-
-    if (loadedLangAlias)
-        loadedLang = {
-            [loadedLangAlias]: loadedLang
-        };
-
-    return loadedLang;
 };

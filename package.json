@@ -28,8 +28,12 @@
     "url": "https://github.com/balovbohdan/react-localizer/issues"
   },
   "homepage": "https://github.com/balovbohdan/react-localizer#readme",
+  "dependencies": {
+    "react": "^16.8.6"
+  },
   "devDependencies": {
     "@types/core-js": "^2.5.0",
-    "tslint": "^5.11.0"
+    "tslint": "^5.11.0",
+    "typescript": "^3.5.2"
   }
 }
