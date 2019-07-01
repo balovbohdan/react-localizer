@@ -9,13 +9,13 @@ type Props = {
 export const importLangFile = async (props:Props) => {
     const res = await doImport(props);
 
+    console.log(props.getLangCode);
+
     return res.default;
 };
 
 const doImport = props => {
     const {load} = props;
-
-    console.log(props);
 
     if (typeof load === 'function')
         return importByHelper(props);
