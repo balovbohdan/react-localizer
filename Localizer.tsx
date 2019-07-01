@@ -30,8 +30,6 @@ export const Localizer = (props:Props) => {
 
         const {load, filesPath, getLangCode} = props;
 
-        console.log(getLangCode);
-
         const res = await importLangFile({
             load,
             filesPath,
