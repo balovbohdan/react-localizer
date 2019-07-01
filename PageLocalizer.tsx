@@ -17,6 +17,8 @@ export const PageLocalizer = (props:Props) => {
         filesRoot: props.filesRoot
     });
 
+    console.log(props.getLangCode);
+
     return (
         <Localizer {...props} load={load}>
             {props.children}
