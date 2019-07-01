@@ -9,8 +9,6 @@ type Props = {
 export const importLangFile = async (props:Props) => {
     const res = await doImport(props);
 
-    console.log(props.getLangCode);
-
     return res.default;
 };
 
