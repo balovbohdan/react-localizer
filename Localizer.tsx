@@ -40,14 +40,18 @@ export const Localizer = (props:Props) => {
         setIsImporting(false);
     };
 
+    return <Content lang={lang} props={props}/>;
+};
+
+const Content = ({lang, props}) => {
     if (!lang)
         return null;
 
     return (
         <LoadingResult
+            loadedLang={lang}
             shred={props.shred}
             parentLang={props.lang}
-            loadedLang={lang as T.Lang}
             loadedLangAlias={props.alias}>
             {props.children}
         </LoadingResult>
