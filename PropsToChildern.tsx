@@ -6,15 +6,15 @@ type Props = {
 };
 
 export const PropsToChildren = (props:Props) =>
-    <>
-        <Children props={props.props}>
-            {props.children}
-        </Children>
-    </>;
+    <Children props={props.props}>
+        {props.children}
+    </Children>;
 
 const Children = props => {
     const mapper = child =>
         React.cloneElement(child, props.props);
 
-    return React.Children.map(props.children, mapper);
+    const children = React.Children.map(props.children, mapper);
+
+    return <>{children}</>;
 };
