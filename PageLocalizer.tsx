@@ -11,7 +11,12 @@ type Props = {
     getLangCode:T.LangCodeGetter;
 };
 
-type Loader = (page:string)=>Promise<T.Lang>;
+type Loader = (props:LoaderProps)=>Promise<T.Lang>;
+
+type LoaderProps = {
+    page:string;
+    langCode:string;
+};
 
 export const PageLocalizer = (props:Props) => {
     checkProps(props);
@@ -25,8 +30,12 @@ export const PageLocalizer = (props:Props) => {
     );
 };
 
-const createLoader = ({load, page}:Props) =>
-    () => load(page);
+const createLoader = ({load, page, getLangCode}:Props) =>
+    async () => {
+        const langCode = await getLangCode();
+
+        return load({ page, langCode });
+    };
 
 const checkProps = (props:Props):void|null => {
     if (!props.page)
