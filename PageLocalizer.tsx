@@ -6,7 +6,7 @@ import {Localizer} from './Localizer';
 type Props = {
     page:string;
     shred?:string;
-    filesRoot?:string;
+    filesRoot:string;
     children?:React.ReactNode;
     getLangCode:T.LangCodeGetter;
 };
@@ -16,8 +16,6 @@ export const PageLocalizer = (props:Props) => {
         page: props.page,
         filesRoot: props.filesRoot
     });
-
-    console.log(props.getLangCode);
 
     return (
         <Localizer {...props} load={load}>
