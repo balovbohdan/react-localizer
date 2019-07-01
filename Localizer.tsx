@@ -8,7 +8,6 @@ type Props = {
     lang?:T.Lang;
     shred?:string;
     alias?:string;
-    filesPath?:string;
     children?:React.ReactNode;
     getLangCode:T.LangCodeGetter;
     load?:T.LangLoader|T.LangLoader[];
@@ -30,11 +29,10 @@ export const Localizer = (props:Props) => {
 
         setIsImporting(true);
 
-        const {load, filesPath, getLangCode} = props;
+        const {load, getLangCode} = props;
 
         const res = await importLangFile({
             load,
-            filesPath,
             getLangCode
         });
 

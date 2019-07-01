@@ -1,7 +1,6 @@
 import * as T from '../types';
 
 type Props = {
-    filesPath?:string;
     getLangCode:T.LangCodeGetter;
     load?:T.LangLoader|T.LangLoader[];
 };
@@ -23,7 +22,7 @@ const doImport = props => {
     if (Array.isArray(load))
         return importByByHelpers(props);
 
-    return importByFilesPath(props);
+    throw new Error('Failed to load lang file. No loader was provided.');
 };
 
 const importByHelper = async ({load, getLangCode}) => {
@@ -41,12 +40,6 @@ const importByByHelpers = async ({load, getLangCode}) => {
     return {
         default: Object.assign({}, ...res)
     };
-};
-
-const importByFilesPath = async ({filesPath, getLangCode}) => {
-    const lang = await getLangCode();
-
-    return import(`${filesPath}${lang}.json`);
 };
 
 const checkProps = (props:Props):void|never => {

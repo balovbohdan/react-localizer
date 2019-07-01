@@ -4,20 +4,19 @@ import * as T from './types';
 import {Localizer} from './Localizer';
 
 type Props = {
+    load:Loader;
     page:string;
     shred?:string;
-    filesRoot:string;
     children?:React.ReactNode;
     getLangCode:T.LangCodeGetter;
 };
 
+type Loader = (page:string)=>Promise<T.Lang>;
+
 export const PageLocalizer = (props:Props) => {
     checkProps(props);
 
-    const load = createLoader({
-        page: props.page,
-        filesRoot: props.filesRoot
-    });
+    const load = createLoader(props);
 
     return (
         <Localizer {...props} load={load}>
@@ -26,16 +25,12 @@ export const PageLocalizer = (props:Props) => {
     );
 };
 
-const createLoader = ({page, filesRoot}) =>
-    (langCode:string):Promise<T.Lang> =>
-        import(`${filesRoot}${page}/${langCode}.json`);
+const createLoader = ({load, page}:Props) =>
+    () => load(page);
 
 const checkProps = (props:Props):void|null => {
     if (!props.page)
         throw new Error(`Got invalid 'page' property.`);
-
-    if (!props.filesRoot)
-        throw new Error(`Got invalid 'filesRoot' property.`);
 
     if (typeof props.getLangCode !== 'function')
         throw new Error(`For invalid 'getLangCode' property.`);
