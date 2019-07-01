@@ -1,4 +1,4 @@
-import React from 'react';
+import * as React from 'react';
 
 import * as T from './types';
 import {Localizer} from './Localizer';
