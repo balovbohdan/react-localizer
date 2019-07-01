@@ -7,6 +7,8 @@ type Props = {
 };
 
 export const importLangFile = async (props:Props) => {
+    checkProps(props);
+
     const res = await doImport(props);
 
     return res.default;
@@ -45,4 +47,9 @@ const importByFilesPath = async ({filesPath, getLangCode}) => {
     const lang = await getLangCode();
 
     return import(`${filesPath}${lang}`);
+};
+
+const checkProps = (props:Props):void|never => {
+    if (typeof props.getLangCode !== 'function')
+        throw new Error(`Got invalid 'getLangCode' property.`);
 };

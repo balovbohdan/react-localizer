@@ -15,6 +15,8 @@ type Props = {
 };
 
 export const Localizer = (props:Props) => {
+    checkProps(props);
+
     const [lang, setLang] = React.useState(null);
     const [isImporting, setIsImporting] = React.useState(false);
 
@@ -56,4 +58,9 @@ const Content = ({lang, props}) => {
             {props.children}
         </LoadingResult>
     );
+};
+
+const checkProps = (props:Props):void|never => {
+    if (!props.getLangCode)
+        throw new Error(`Got invalid 'getLangCode' property.`);
 };
