@@ -18,7 +18,7 @@ export const PageLocalizer = (props:Props) => {
     });
 
     return (
-        <Localizer {...props} load={load} getLangCode={props.getLangCode}>
+        <Localizer {...props} load={load}>
             {props.children}
         </Localizer>
     );

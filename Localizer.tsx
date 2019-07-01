@@ -18,9 +18,6 @@ export const Localizer = (props:Props) => {
     const [lang, setLang] = React.useState(null);
     const [isImporting, setIsImporting] = React.useState(false);
 
-    if (!props.getLangCode)
-        console.log(props);
-
     React.useEffect(() => {
         importData()
             .catch(e => console.warn(e));
