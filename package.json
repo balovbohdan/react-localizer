@@ -1,0 +1,35 @@
+{
+  "name": "react-localizer",
+  "version": "1.0.0",
+  "description": "Localizer for the React components.",
+  "main": "index.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/balovbohdan/react-localizer.git"
+  },
+  "keywords": [
+    "react",
+    "localizer",
+    "language",
+    "lang",
+    "localization",
+    "js",
+    "javascript",
+    "typescript",
+    "ts",
+    "multilanguage"
+  ],
+  "author": {
+    "name": "balov_bohdan"
+  },
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/balovbohdan/react-localizer/issues"
+  },
+  "homepage": "https://github.com/balovbohdan/react-localizer#readme",
+  "devDependencies": {
+    "@types/core-js": "^2.5.0",
+    "tslint": "^5.11.0"
+  }
+}

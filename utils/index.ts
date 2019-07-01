@@ -1,0 +1,1 @@
+export {importLangFile} from './lang-file-importer';
