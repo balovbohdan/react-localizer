@@ -46,7 +46,7 @@ const importByByHelpers = async ({load, getLangCode}) => {
 const importByFilesPath = async ({filesPath, getLangCode}) => {
     const lang = await getLangCode();
 
-    return import(`${filesPath}${lang}`);
+    return import(`${filesPath}${lang}.json`);
 };
 
 const checkProps = (props:Props):void|never => {

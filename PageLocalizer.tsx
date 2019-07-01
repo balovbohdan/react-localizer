@@ -28,7 +28,7 @@ export const PageLocalizer = (props:Props) => {
 
 const createLoader = ({page, filesRoot}) =>
     (langCode:string):Promise<T.Lang> =>
-        import(`${filesRoot}${page}/${langCode}`);
+        import(`${filesRoot}${page}/${langCode}.json`);
 
 const checkProps = (props:Props):void|null => {
     if (!props.page)
