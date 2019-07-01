@@ -45,9 +45,9 @@ export const Localizer = (props:Props) => {
 
     return (
         <LoadingResult
-            loadedLang={lang}
             shred={props.shred}
             parentLang={props.lang}
+            loadedLang={lang as T.Lang}
             loadedLangAlias={props.alias}>
             {props.children}
         </LoadingResult>
