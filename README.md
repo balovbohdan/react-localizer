@@ -266,7 +266,7 @@ export default getLangCode;
 ```
 
 # GitHub repository
-https://github.com/balovbohdan/react-localizer
+https://github.com/balovbohdan/ts-react-loc
 
 # Contributing
 Pull requests and forks are welcome. You can use this code freely for
