@@ -1,12 +1,12 @@
 {
-  "name": "react-localizer",
+  "name": "react-loc",
   "version": "1.0.0",
   "description": "Localizer for the React components.",
   "main": "index.ts",
   "scripts": {},
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/balovbohdan/react-localizer.git"
+    "url": "git+https://github.com/balovbohdan/react-loc.git"
   },
   "keywords": [
     "react",
