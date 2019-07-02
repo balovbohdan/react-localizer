@@ -10,7 +10,7 @@ type Props = {
     alias?:string;
     children?:React.ReactNode;
     getLangCode:T.LangCodeGetter;
-    load?:T.LangLoader|T.LangLoader[];
+    load:T.LangLoader|T.LangLoader[];
 };
 
 export const Localizer = (props:Props) => {

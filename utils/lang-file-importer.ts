@@ -2,7 +2,7 @@ import * as T from '../types';
 
 type Props = {
     getLangCode:T.LangCodeGetter;
-    load?:T.LangLoader|T.LangLoader[];
+    load:T.LangLoader|T.LangLoader[];
 };
 
 export const importLangFile = async (props:Props) => {
