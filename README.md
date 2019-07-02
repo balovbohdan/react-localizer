@@ -6,7 +6,7 @@ We have formed some good practices in implementing localization using this modul
 
 # Installation
 ```bash
-npm i --save react-localizer
+npm i --save ts-react-loc
 ```
 
 # API
