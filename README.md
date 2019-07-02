@@ -33,7 +33,7 @@ Let's look at several usage variants that may be useful for you projects.
 Here are some notes you have to remember:
 * Language modules must be as independent as possible (i.e. 'isolated'). This means you have to create
 language modules that are appropriate to some components. Such components are reusable
-and can be used for creating you own multilanguage components library.
+and can be used for creating your own multilanguage components library.
 * Sometimes it is useful to create language modules for pages. In this case one language
 module is bound with one page. This must be created for some non-reusable components.
 But isolated components with isolated language modules are preferable.
@@ -179,7 +179,7 @@ export const Loc = (props:Props) =>
         {props.children}
     </PageLoc>;
 ```
-Now we are ready to implement `Main.tsx` component that is root component for
+Now we are ready to implement multilanguage `Main.tsx` component that is root component for
 the _main_ page. Let's go.
 ```typescript
 // @pages/main/Main.tsx
@@ -226,7 +226,7 @@ export const getLangCode = async () =>
     window.localStorage.getItem('langCode')
         || 'en';
 ```
-In some cases language code getter will be rather complicated. For example, there
+In some cases language code getter might be rather complicated. For example, there
 is one of our `getLangCode` function we use in `NeuroClub` project.
 ```typescript
 import {Config} from 'global-config';
@@ -269,7 +269,9 @@ export default getLangCode;
 https://github.com/balovbohdan/react-localizer
 
 # Contributing
-Pull requests and forks are welcome. You can use this code freely for your own experiments. If you have some questions or proposals feel free to write message.
+Pull requests and forks are welcome. You can use this code freely for
+your own projects and/or experiments. If you have some questions or proposals
+feel free to write message.
 
 # License
 [MIT](https://choosealicense.com/licenses/mit/)
