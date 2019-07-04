@@ -1,7 +1,7 @@
 {
   "name": "ts-react-loc",
-  "version": "1.0.3",
-  "description": "Localizer for the React components.",
+  "version": "1.0.4",
+  "description": "Localizer for the React components (TypeScript).",
   "main": "index.ts",
   "scripts": {},
   "repository": {
@@ -21,9 +21,16 @@
     "multilanguage",
     "internationalization"
   ],
-  "author": {
-    "name": "balov_bohdan"
-  },
+  "contributors": [
+    {
+      "name": "balov_bohdan",
+      "email": "balovbohdan@gmail.com"
+    },
+    {
+      "name": "vova_kalynii",
+      "email": "v.kalynii@gmail.com"
+    }
+  ],
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/balovbohdan/react-localizer/issues"
