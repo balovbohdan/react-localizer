@@ -1,5 +1,5 @@
 # About
-`react-localizer` was developed to allow developers to create localization in quick and easy way.
+`ts-react-loc` was developed to allow developers to create localization in quick and easy way.
 The only manual work you have to perform: create language files and simple `loaders`.
 This module was tested within several big projects in **AMAKids.Dev** company and showed great results.
 We have formed some good practices in implementing localization using this module, and they will be described below.
