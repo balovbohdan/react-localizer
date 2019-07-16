@@ -17,15 +17,20 @@ export const Localizer = (props:Props) => {
     checkProps(props);
 
     const [lang, setLang] = React.useState(null);
+    const [isUnmounted, setIsUnmounted] = React.useState(false);
     const [isImporting, setIsImporting] = React.useState(false);
 
     React.useEffect(() => {
         importData()
             .catch(e => console.warn(e));
+
+        return () => {
+            setIsUnmounted(true);
+        };
     }, []);
 
     const importData = async () => {
-        if (lang || isImporting) return;
+        if (lang || isImporting || isUnmounted) return;
 
         setIsImporting(true);
 
@@ -35,6 +40,8 @@ export const Localizer = (props:Props) => {
             load,
             getLangCode
         });
+
+        if (isUnmounted) return;
 
         setLang(res);
         setIsImporting(false);
