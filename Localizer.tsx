@@ -17,15 +17,16 @@ export const Localizer = (props:Props) => {
     checkProps(props);
 
     const [lang, setLang] = React.useState(null);
-    const [isUnmounted, setIsUnmounted] = React.useState(false);
     const [isImporting, setIsImporting] = React.useState(false);
+
+    let isUnmounted = false;
 
     React.useEffect(() => {
         importData()
             .catch(e => console.warn(e));
 
         return () => {
-            setIsUnmounted(true);
+            isUnmounted = true;
         };
     }, []);
 
