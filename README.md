@@ -77,8 +77,15 @@ export const Header = (props:Props) =>
     </Loc>;
     
 const Loc = () => {
-    const load = (langCode:string) =>
-        import(`./lang/${langCode}`);
+    const load = async (langCode:string) => {
+        try {
+            return await import(`./lang/${langCode}`);
+        } catch (e) {
+            console.warn(e.message);
+            
+            return {};
+        }
+    };
     
     return (
         <Localizer load={load} getLangCode={getLangCode}>
@@ -142,8 +149,15 @@ export const PageLoc = (props:Props) =>
         {props.children}
     </Localizer>;
 
-const load = ({page, langCode}) =>
-    import(`@assets/lang/pages/${page}/${langCode}`);
+const load = async ({page, langCode}) => {
+    try {
+        return await import(`@assets/lang/pages/${page}/${langCode}`);
+    } catch (e) {
+        console.warn(e.message);
+        
+        return {};
+    }
+};
 ```
 Now imagine you have `Main.tsx` component that is root component for the _main_ page.
 You will have similar files structure:
